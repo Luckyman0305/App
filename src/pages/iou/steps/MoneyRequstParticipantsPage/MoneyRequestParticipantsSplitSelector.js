@@ -129,7 +129,7 @@ function MoneyRequestParticipantsSplitSelector({betas, participants, personalDet
             if (isOptionInList) {
                 newSelectedOptions = _.reject(participants, (selectedOption) => selectedOption.accountID === option.accountID);
             } else {
-                newSelectedOptions = [...participants, {accountID: option.accountID, login: option.login, selected: true}];
+                newSelectedOptions = [...participants, {accountID: option.accountID, login: option.login, selected: true, searchText: option.searchText}];
             }
 
             onAddParticipants(newSelectedOptions);
@@ -150,6 +150,7 @@ function MoneyRequestParticipantsSplitSelector({betas, participants, personalDet
         Boolean(newChatOptions.userToInvite),
         searchTerm,
         maxParticipantsReached,
+        participants.filter(participant => participant.searchText.includes(searchTerm)).length > 0
     );
     const isOptionsDataReady = ReportUtils.isReportDataReady() && OptionsListUtils.isPersonalDetailsReady(personalDetails);
 
