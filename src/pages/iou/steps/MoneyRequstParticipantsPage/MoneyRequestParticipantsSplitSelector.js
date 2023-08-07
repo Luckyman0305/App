@@ -150,7 +150,7 @@ function MoneyRequestParticipantsSplitSelector({betas, participants, personalDet
         Boolean(newChatOptions.userToInvite),
         searchTerm,
         maxParticipantsReached,
-        participants.filter(participant => participant.searchText.includes(searchTerm)).length > 0
+        participants.filter(participant => participant.searchText.toLowerCase().includes(searchTerm.toLowerCase())).length > 0
     );
     const isOptionsDataReady = ReportUtils.isReportDataReady() && OptionsListUtils.isPersonalDetailsReady(personalDetails);
 
