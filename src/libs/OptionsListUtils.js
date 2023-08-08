@@ -1031,9 +1031,10 @@ function getHeaderMessage(hasSelectableOptions, hasUserToInvite, searchValue, ma
         if (/@/.test(searchValue) && !isValidEmail) {
             return Localize.translate(preferredLocale, 'messages.errorMessageInvalidEmail');
         }
-        if (!hasMatchedParticipant){
-            return Localize.translate(preferredLocale, 'common.noResultsFound');
+        if (hasMatchedParticipant && (isValidEmail || isValidPhone)){
+            return '';
         }
+        return Localize.translate(preferredLocale, 'common.noResultsFound');
     }
 
     return '';
